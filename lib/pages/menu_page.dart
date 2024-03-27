@@ -7,82 +7,87 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.green,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Yuuta Cek Ekspedisi'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.more_vert),
+              onPressed: () {
+                // Action when shopping cart button is pressed
+              },
             ),
-            child: Text(
-              'Jayon Cek Ongkir & Resi',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const CheckPage();
-              }));
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: const Color.fromARGB(255, 85, 85, 85),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Color.fromARGB(255, 85, 85, 85),
-                          blurRadius: 50),
-                    ],
-                  ),
-                  child: const Text("Cek Ongkir",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                      textAlign: TextAlign.center),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Image.asset(
+                'assets/ayaka.jpg',
+                fit: BoxFit.fitWidth,
+              ),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Menu dari Aplikasi',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const CekResi();
-                    }));
-                  },
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: const Color.fromARGB(255, 85, 85, 85),
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Color.fromARGB(255, 85, 85, 85),
-                                blurRadius: 50),
-                          ],
-                        ),
-                        child: const Text("Cek Resi",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                            textAlign: TextAlign.center),
-                      ),
-                    ],
-                  ),
+              ),
+              SizedBox(
+                height: 100,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    _buildMenuItem(context, 'Cek Ongkir', Icons.local_shipping),
+                    _buildMenuItem(context, 'Cek Resi', Icons.find_in_page),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuItem(BuildContext context, String title, IconData icon) {
+    return InkWell(
+      // When the user taps the button, show a snackbar.
+      onTap: () {
+        if (title == 'Cek Ongkir') {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) {
+            return const CheckPage();
+          }));
+        }
+        if (title == 'Cek Resi') {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) {
+            return const CekResi();
+          }));
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                radius: 30,
+                backgroundColor: Colors.grey[200],
+                child: Icon(icon, size: 30),
+              ),
+              const SizedBox(height: 5),
+              Text(title),
+            ],
+          ),
+        ),
       ),
     );
   }
