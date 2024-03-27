@@ -1,5 +1,6 @@
+import 'package:cek_ongkir_jayon/pages/menu_page.dart';
 import 'package:flutter/material.dart';
-import 'package:cek_ongkir_jayon/pages/check_page.dart';
+// import 'package:cek_ongkir_jayon/pages/check_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -136,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) {
-                          return const CheckPage();
+                          return const MenuPage();
                         }));
                       },
                       child: const Text(
