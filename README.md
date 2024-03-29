@@ -1,16 +1,28 @@
-# cek_ongkir_jayon
+# Yuuta Cek Ekspedisi
 
-A new Flutter project.
+Projek Flutter sederhana yang dimana untuk cek ongkir dan cek resi pengiriman.
 
-## Getting Started
+## Kalo mau support saya bisa lewat sociabuzz
 
-This project is a starting point for a Flutter application.
+Sociabuzz : https://sociabuzz.com/dewa_jayon/donate
 
-A few resources to get you started if this is your first Flutter project:
+## Cara Install
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Berikut adalah langkah-langkah untuk menginstal dan menjalankan aplikasi:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Lakukan git clone repository ini:
+
+    ```bash
+    git clone https://github.com/DewaJayon/cek_ongkir_flutter.git
+    ```
+
+2. Install depedensi yanada di pubsec.yaml
+3. Jalankan Projek dengan Android Emulator
+4. Jangan lupa untuk memastikan API key sudah terpasang di model resi.dart, check_page.dart dan detail_page.dart
+
+## Fitur
+
+///// Indonesia ONLY! /////
+
+1. Cek Ongkir
+2. Cek Resi pengiriman

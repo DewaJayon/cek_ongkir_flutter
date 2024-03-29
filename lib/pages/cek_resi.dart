@@ -1,4 +1,5 @@
-import 'package:cek_ongkir_jayon/pages/app_bar.dart';
+import 'package:cek_ongkir_jayon/pages/check_page.dart';
+import 'package:cek_ongkir_jayon/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cek_ongkir_jayon/models/resi.dart';
 
@@ -63,7 +64,55 @@ class _CekResiState extends State<CekResi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const NavBar(),
+      appBar: AppBar(
+        title: const Text('Yuuta Cek Ekspedisi'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text('Menu'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MenuPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Cek Ongkir'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CheckPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Cek Resi'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CekResi()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

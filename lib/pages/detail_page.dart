@@ -1,26 +1,19 @@
 import 'dart:convert';
 
+import 'package:cek_ongkir_jayon/pages/cek_resi.dart';
+import 'package:cek_ongkir_jayon/pages/check_page.dart';
+import 'package:cek_ongkir_jayon/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class DetailPage extends StatefulWidget {
-  // ignore: non_constant_identifier_names
   final String? kota_asal;
-  // ignore: non_constant_identifier_names
   final String? kota_tujuan;
   final String? berat;
   final String? kurir;
 
-  // ignore: non_constant_identifier_names
   const DetailPage(
-      // ignore: non_constant_identifier_names
-      {super.key,
-      // ignore: non_constant_identifier_names
-      this.kota_asal,
-      // ignore: non_constant_identifier_names
-      this.kota_tujuan,
-      this.berat,
-      this.kurir});
+      {super.key, this.kota_asal, this.kota_tujuan, this.berat, this.kurir});
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -28,7 +21,8 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   List _data = [];
-  var key = '89d52eb76ad5b3a125d688bd16b66f91';
+  var key =
+      'Api key anda'; //masukkan api key yang diberikan oleh rajaongkir.com
 
   @override
   void initState() {
@@ -69,7 +63,53 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Detail Cek Ongkir"),
+        title: const Text('Yuuta Cek Ekspedisi'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text('Menu'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MenuPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Cek Ongkir'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CheckPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Cek Resi'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CekResi()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: ListView.builder(
         itemCount: _data.length,

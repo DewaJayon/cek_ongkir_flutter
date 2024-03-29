@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:cek_ongkir_jayon/pages/app_bar.dart';
+import 'package:cek_ongkir_jayon/pages/cek_resi.dart';
 import 'package:cek_ongkir_jayon/pages/detail_page.dart';
+import 'package:cek_ongkir_jayon/pages/menu_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:cek_ongkir_jayon/models/kota.dart';
@@ -14,20 +15,65 @@ class CheckPage extends StatefulWidget {
 }
 
 class _CheckPageState extends State<CheckPage> {
-  var key = '89d52eb76ad5b3a125d688bd16b66f91';
-  // ignore: prefer_typing_uninitialized_variables, non_constant_identifier_names
+  var key =
+      'Api key anda'; //masukkan api key yang diberikan oleh rajaongkir.com
   var kota_asal;
-  // ignore: prefer_typing_uninitialized_variables, non_constant_identifier_names
   var kota_tujuan;
-  // ignore: prefer_typing_uninitialized_variables
   var berat;
-  // ignore: prefer_typing_uninitialized_variables
   var kurir;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const NavBar(),
+      appBar: AppBar(
+        title: const Text('Yuuta Cek Ekspedisi'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text('Menu'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MenuPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Cek Ongkir'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CheckPage()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Cek Resi'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const CekResi()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.all(20),
         child: Column(

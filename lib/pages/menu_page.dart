@@ -12,14 +12,52 @@ class MenuPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Yuuta Cek Ekspedisi'),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.more_vert),
-              onPressed: () {
-                // Action when shopping cart button is pressed
-              },
-            ),
-          ],
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                ),
+                child: Text(
+                  'Menu',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: const Text('Menu'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MenuPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Cek Ongkir'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CheckPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Cek Resi'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CekResi()),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -60,16 +98,12 @@ class MenuPage extends StatelessWidget {
       // When the user taps the button, show a snackbar.
       onTap: () {
         if (title == 'Cek Ongkir') {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) {
-            return const CheckPage();
-          }));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CheckPage()));
         }
         if (title == 'Cek Resi') {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) {
-            return const CekResi();
-          }));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CekResi()));
         }
       },
       child: Padding(
